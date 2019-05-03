@@ -90,24 +90,28 @@ public class WobbleSpawner : MonoBehaviour
             cube.SetActive(true);
 
             // set cube color
-            var mat = cube.GetComponent<Image>().color = Color.HSVToRGB(1f / spectrumDataList.Count * count, 1, 1);
 
             if (group.index < 7)
             {
                 firstcubes.Add(group.index, cube);
+                //var mat = cube.GetComponent<Image>().color = Color.blue;
             }
             else if (group.index < 13)
             {
                 secondcubes.Add(group.index, cube);
-
+                //var mat = cube.GetComponent<Image>().color = Color.red;
             }
             else if (group.index < 19)
             {
                 thirdcubes.Add(group.index, cube);
+                //var mat = cube.GetComponent<Image>().color = Color.yellow;
+
             }
             else
             {
                 fourthcubes.Add(group.index, cube);
+                //var mat = cube.GetComponent<Image>().color = Color.green;
+
             }
 
             count++;
@@ -185,7 +189,6 @@ public class WobbleSpawner : MonoBehaviour
             if (firstGroup)
             {
                 cube.GetComponent<Wobble>().speed = 10;
-
             }
             else
             {
