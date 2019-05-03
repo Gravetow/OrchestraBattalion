@@ -11,20 +11,25 @@ public class WobbleSpawner : MonoBehaviour
     Dictionary<int, SpectrumData> spectrumDataList = new Dictionary<int, SpectrumData>();
     int[][] spectrumRanges;
 
-    Dictionary<int, GameObject> cubes = new Dictionary<int, GameObject>();
+    Dictionary<int, GameObject> firstcubes = new Dictionary<int, GameObject>();
+    Dictionary<int, GameObject> secondcubes = new Dictionary<int, GameObject>();
+    Dictionary<int, GameObject> thirdcubes = new Dictionary<int, GameObject>();
+    Dictionary<int, GameObject> fourthcubes = new Dictionary<int, GameObject>();
 
     void Start()
     {
         // define which aduio hz ranges we want to use
-        spectrumRanges = new int[4][]
+        spectrumRanges = new int[26][]
         {
-
+            /*
             new int[2] {121, 260},
             new int[2] {261, 500},
-            new int[2] {501, 900},
-            new int[2] {901, 2250}
-          
-            /*// range 1
+            //türkis (meistens viel von)
+            new int[2] {501, 750},
+            //violett (kaum)
+            new int[2] {751, 2250}
+          */
+            /// range 1  :  0-6
             new int[2] {121, 140},
             new int[2] {141, 160},
             new int[2] {161, 180},
@@ -33,7 +38,7 @@ public class WobbleSpawner : MonoBehaviour
             new int[2] {221, 240},
             new int[2] {241, 260},
 
-            // range 2
+            // range 2 :  7-12
             new int[2] {261, 280},
             new int[2] {281, 300},
             new int[2] {301, 350},
@@ -41,7 +46,7 @@ public class WobbleSpawner : MonoBehaviour
             new int[2] {401, 450},
             new int[2] {451, 500},
 
-            // range 3
+            // range 3  :  13- 18
             new int[2] {501, 550},
             new int[2] {551, 600},
             new int[2] {601, 650},
@@ -49,7 +54,7 @@ public class WobbleSpawner : MonoBehaviour
             new int[2] {701, 800},
             new int[2] {801, 900},
 
-            // range 4  
+            // range 4   :19- 25
             new int[2] {901, 1000},
             new int[2] {1001, 1200},
             new int[2] {1201, 1400},
@@ -57,7 +62,7 @@ public class WobbleSpawner : MonoBehaviour
             new int[2] {1601, 1800},
             new int[2] {1801, 2000},
             new int[2] {2001, 2250}
-            */
+
         };
         // create data objects for each range
         for (int i = 0; i < spectrumRanges.Length; i++)
@@ -85,9 +90,25 @@ public class WobbleSpawner : MonoBehaviour
             cube.SetActive(true);
 
             // set cube color
-            var mat = cube  .GetComponent<Image>().color =  Color.HSVToRGB(1f / spectrumDataList.Count * count, 1, 1);
-          
-            cubes.Add(group.index, cube);
+            var mat = cube.GetComponent<Image>().color = Color.HSVToRGB(1f / spectrumDataList.Count * count, 1, 1);
+
+            if (group.index < 7)
+            {
+                firstcubes.Add(group.index, cube);
+            }
+            else if (group.index < 13)
+            {
+                secondcubes.Add(group.index, cube);
+
+            }
+            else if (group.index < 19)
+            {
+                thirdcubes.Add(group.index, cube);
+            }
+            else
+            {
+                fourthcubes.Add(group.index, cube);
+            }
 
             count++;
         }
@@ -133,10 +154,85 @@ public class WobbleSpawner : MonoBehaviour
                 max = group.data;
             }
         }
+
+        bool firstGroup = false;
+        bool secondGroup = false;
+        bool thirdGroup = false;
+        bool fourthGroup = false;
+
         // normalize data between 0 and 1
         foreach (var item in spectrumDataList)
         {
             item.Value.dataNormalized = Mathf.Clamp((item.Value.data - min) / (max - min), 0.01f, 1f);
+
+            var group = item.Value;
+            if (group.dataNormalized > 0.5f)
+
+                if (group.index < 7)
+                {
+                    firstGroup = true;
+                }
+                else if (group.index < 13)
+                {
+                    secondGroup = true;
+                }
+                else if (group.index < 19)
+                {
+                    thirdGroup = true;
+                }
+                else
+                {
+                    fourthGroup = true;
+                }
         }
+
+            foreach(GameObject cube in firstcubes.Values)
+            {
+                if(firstGroup)
+                {
+                cube.GetComponent<Wobble>().speed = 75;
+
+                } else
+                {
+                    cube.GetComponent<Wobble>().speed = 25;
+                }
+        }
+        foreach (GameObject cube in secondcubes.Values)
+        {
+            if (secondGroup)
+            {
+                cube.GetComponent<Wobble>().speed = 75;
+
+            }
+            else
+            {
+                cube.GetComponent<Wobble>().speed = 25;
+            }
+        }
+        foreach (GameObject cube in thirdcubes.Values)
+        {
+            if (thirdGroup)
+            {
+                cube.GetComponent<Wobble>().speed = 75;
+
+            }
+            else
+            {
+                cube.GetComponent<Wobble>().speed = 25;
+            }
+        }
+        foreach (GameObject cube in fourthcubes.Values)
+        {
+            if (fourthGroup)
+            {
+                cube.GetComponent<Wobble>().speed = 75;
+
+            }
+            else
+            {
+                cube.GetComponent<Wobble>().speed = 25;
+            }
+        }
+
     }
 }

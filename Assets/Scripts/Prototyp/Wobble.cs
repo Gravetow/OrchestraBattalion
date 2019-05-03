@@ -5,7 +5,7 @@ using UnityEngine;
 public class Wobble : MonoBehaviour
 {
     public GameObject city;
-    public float speed;
+    public float speed = 20;
 
     // Start is called before the first frame update
     void Start()
