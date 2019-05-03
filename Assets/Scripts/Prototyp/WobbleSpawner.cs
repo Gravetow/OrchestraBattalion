@@ -166,42 +166,37 @@ public class WobbleSpawner : MonoBehaviour
             item.Value.dataNormalized = Mathf.Clamp((item.Value.data - min) / (max - min), 0.01f, 1f);
 
             var group = item.Value;
-            if (group.dataNormalized > 0.5f)
-
-                if (group.index < 7)
-                {
-                    firstGroup = true;
-                }
-                else if (group.index < 13)
-                {
-                    secondGroup = true;
-                }
-                else if (group.index < 19)
-                {
-                    thirdGroup = true;
-                }
-                else
-                {
-                    fourthGroup = true;
-                }
+            if (group.dataNormalized > 0.15f && group.index < 7)
+                firstGroup = true;
+            if (group.dataNormalized > 0.25f && group.index >= 7 && group.index < 13)
+                secondGroup = true;
+            if (group.dataNormalized > 0.4f && group.index >= 13 && group.index < 19)
+            {
+                thirdGroup = true;
+            }
+            if (group.dataNormalized > 0.7f && group.index >= 19 && group.index < 26)
+            {
+                fourthGroup = true;
+            }
         }
 
-            foreach(GameObject cube in firstcubes.Values)
+        foreach (GameObject cube in firstcubes.Values)
+        {
+            if (firstGroup)
             {
-                if(firstGroup)
-                {
-                cube.GetComponent<Wobble>().speed = 75;
+                cube.GetComponent<Wobble>().speed = 10;
 
-                } else
-                {
-                    cube.GetComponent<Wobble>().speed = 25;
-                }
+            }
+            else
+            {
+                cube.GetComponent<Wobble>().speed = 25;
+            }
         }
         foreach (GameObject cube in secondcubes.Values)
         {
             if (secondGroup)
             {
-                cube.GetComponent<Wobble>().speed = 75;
+                cube.GetComponent<Wobble>().speed = 10;
 
             }
             else
@@ -213,7 +208,7 @@ public class WobbleSpawner : MonoBehaviour
         {
             if (thirdGroup)
             {
-                cube.GetComponent<Wobble>().speed = 75;
+                cube.GetComponent<Wobble>().speed = 10;
 
             }
             else
@@ -225,7 +220,7 @@ public class WobbleSpawner : MonoBehaviour
         {
             if (fourthGroup)
             {
-                cube.GetComponent<Wobble>().speed = 75;
+                cube.GetComponent<Wobble>().speed = 10;
 
             }
             else
