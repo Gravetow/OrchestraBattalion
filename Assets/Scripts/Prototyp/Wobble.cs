@@ -82,10 +82,12 @@ public class Wobble : MonoBehaviour
     {
         if (other.gameObject.name == "OuterZone")
         {
+            speedmult = 0.5f;
             animator.SetInteger("evil", 1);
         }
         else if (other.gameObject.name == "InnerZone")
         {
+            speedmult = 0.25f;
             animator.SetInteger("evil", 2);
         }
     }
