@@ -21,11 +21,7 @@ public class Wobble : MonoBehaviour
     public Animator animator;
 
     private bool happy;
-    private bool dying;
-    private bool dancing;
 
-    private int nextSpriteNumber = 0;
-    private bool next = true;
     private SpriteRenderer spriteRenderer;
 
     private void OnDestroy()
@@ -35,22 +31,31 @@ public class Wobble : MonoBehaviour
 
     private void Move(MoveWobblesSignal moveWobblesSignal)
     {
-        if (moveWobblesSignal.wobbleGroups[group])
+        if (!happy)
         {
-            if (animator.GetBool("happy") == true)
+            if (moveWobblesSignal.wobbleGroups[group])
             {
-                animator.SetBool("happy", false);
+                if (animator.GetBool("happy") == true)
+                {
+                    animator.SetBool("happy", false);
+                }
+                speed = 3;
             }
-            speed = 3;
-        }
-        else
-        {
-            if (animator.GetBool("happy") != true)
+            else
             {
-                animator.SetBool("happy", true);
+                if (animator.GetBool("happy") != true)
+                {
+                    animator.SetBool("happy", true);
+                }
+                happy = true;
+                speed = 0;
             }
-            speed = 0;
         }
+    }
+
+    private void OnFinishDancing()
+    {
+        happy = false;
     }
 
     // Start is called before the first frame update
@@ -106,5 +111,10 @@ public class Wobble : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void OnDead()
+    {
+        Destroy(gameObject);
     }
 }
