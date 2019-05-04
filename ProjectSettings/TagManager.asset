@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 748591051
     locked: 0
+  - name: WobbleHover
+    uniqueID: 108047621
+    locked: 0
   - name: Wobble
     uniqueID: 1964857439
     locked: 0

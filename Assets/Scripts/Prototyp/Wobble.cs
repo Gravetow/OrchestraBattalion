@@ -22,6 +22,7 @@ public class Wobble : MonoBehaviour
     private bool happy;
 
     private SpriteRenderer spriteRenderer;
+    public SpriteRenderer wobbleHover;
 
     private void OnDestroy()
     {
@@ -49,6 +50,7 @@ public class Wobble : MonoBehaviour
                     animator.SetBool("happy", true);
                 }
                 happy = true;
+                wobbleHover.enabled = true;
                 speed = 0;
             }
         }
@@ -56,6 +58,7 @@ public class Wobble : MonoBehaviour
 
     private void OnFinishDancing()
     {
+        wobbleHover.enabled = false;
         happy = false;
     }
 
@@ -64,6 +67,7 @@ public class Wobble : MonoBehaviour
     {
         signalBus.Subscribe<MoveWobblesSignal>(Move);
         signalBus.Subscribe<LoseLifeSignal>(DieThroughCity);
+        wobbleHover.enabled = false;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
