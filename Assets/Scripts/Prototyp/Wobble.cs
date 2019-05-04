@@ -89,7 +89,8 @@ public class Wobble : MonoBehaviour
 
     private void OnClicked()
     {
-        animator.SetBool("dying", true);
+        if (happy)
+            animator.SetBool("dying", true);
     }
 
     private void OnMouseDown()
@@ -115,6 +116,7 @@ public class Wobble : MonoBehaviour
 
     public void OnDead()
     {
+        signalBus.Fire(new WobbleDestroyedSignal());
         Destroy(gameObject);
     }
 }

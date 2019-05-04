@@ -10,6 +10,7 @@ public class GameInstaller : MonoInstaller
         Container.DeclareSignal<StartGameSignal>();
         Container.DeclareSignal<EndGameSignal>();
         Container.DeclareSignal<MoveWobblesSignal>();
+        Container.DeclareSignal<WobbleDestroyedSignal>();
 
         Container.BindInterfacesTo<AudioInterpreter>().AsSingle();
     }

@@ -2,6 +2,8 @@
 
 public class EndGameSignal { }
 
+public class WobbleDestroyedSignal { }
+
 public class OuterLayerTouchedSignal { }
 
 public class InnerLayerTouchedSignal { }
