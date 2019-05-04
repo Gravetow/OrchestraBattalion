@@ -8,7 +8,8 @@ public class OuterLayerTouchedSignal { }
 
 public class InnerLayerTouchedSignal { }
 
-public class CityDestroyedTouchedSignal { }
+public class LoseLifeSignal { }
+
 
 public class MoveWobblesSignal
 {
