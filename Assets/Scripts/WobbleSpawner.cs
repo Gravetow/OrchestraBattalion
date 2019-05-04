@@ -51,7 +51,7 @@ public class WobbleSpawner : MonoBehaviour
             wobble.GetComponent<Wobble>().signalBus = signalBus;
             wobble.GetComponent<Wobble>().city = cityPosition;
             wobble.GetComponent<Wobble>().group = groupNumber;
-            yield return new WaitForSeconds(Random.Range(0.25f, 0.75f));
+            yield return new WaitForSeconds(Random.Range(1f, 2f));
         }
     }
 
