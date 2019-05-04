@@ -6,21 +6,20 @@ public class Visualizer : MonoBehaviour
 {
     public GameObject cubePrefab;
 
-    Dictionary<int, GameObject> cubes = new Dictionary<int, GameObject>();
-    Dictionary<int, GameObject> pcubes = new Dictionary<int, GameObject>();
-    Dictionary<int, SpectrumData> spectrumDataList = new Dictionary<int, SpectrumData>();
+    private Dictionary<int, GameObject> cubes = new Dictionary<int, GameObject>();
+    private Dictionary<int, GameObject> pcubes = new Dictionary<int, GameObject>();
+    private Dictionary<int, SpectrumData> spectrumDataList = new Dictionary<int, SpectrumData>();
 
-    int[][] spectrumRanges;
+    private int[][] spectrumRanges;
 
     /// <summary>
     /// Start
     /// </summary>
-    void Start()
+    private void Start()
     {
         // define which aduio hz ranges we want to use
         spectrumRanges = new int[26][]
         {
-      
             // range 1
             new int[2] {121, 140},
             new int[2] {141, 160},
@@ -46,7 +45,7 @@ public class Visualizer : MonoBehaviour
             new int[2] {701, 800},
             new int[2] {801, 900},
 
-            // range 4  
+            // range 4
             new int[2] {901, 1000},
             new int[2] {1001, 1200},
             new int[2] {1201, 1400},
@@ -54,7 +53,6 @@ public class Visualizer : MonoBehaviour
             new int[2] {1601, 1800},
             new int[2] {1801, 2000},
             new int[2] {2001, 2250}
-  
         };
         // create data objects for each range
         for (int i = 0; i < spectrumRanges.Length; i++)
@@ -74,7 +72,7 @@ public class Visualizer : MonoBehaviour
         {
             var group = item.Value;
             var cube = Instantiate(cubePrefab);
-            cube.name = "" +  spectrumRanges[item.Key].ToString();
+            cube.name = "" + spectrumRanges[item.Key].ToString();
             cube.transform.SetParent(transform);
             cube.name = group.index.ToString();
             var rotate = 360f / spectrumDataList.Count * count;
@@ -87,7 +85,7 @@ public class Visualizer : MonoBehaviour
             var mat = cube.GetComponent<MeshRenderer>().material;
             var color = Color.HSVToRGB(1f / spectrumDataList.Count * count, 1, 1);
             mat.color = color;
-             
+
             cubes.Add(group.index, cube);
 
             // create tiny physical cube
@@ -119,7 +117,7 @@ public class Visualizer : MonoBehaviour
     /// <summary>
     /// Update
     /// </summary>
-    void Update()
+    private void Update()
     {
         UpdateSpectrumDataList();
         SpectrumData prevGroup = spectrumDataList[spectrumRanges.Length - 1];
@@ -128,7 +126,7 @@ public class Visualizer : MonoBehaviour
         {
             var group = item.Value;
             var norm = group.dataNormalized;
-            var cube = cubes[group.index];        
+            var cube = cubes[group.index];
             var scale = Vector3.one;
             scale.y = norm * 6f;
             // just lerp to smooth things out a bit

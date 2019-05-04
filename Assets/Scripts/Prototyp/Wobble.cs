@@ -3,66 +3,108 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Zenject;
+using UnityEngine.EventSystems;
 
 public class Wobble : MonoBehaviour
 {
-    public GameObject city;
+    public SignalBus signalBus;
+
+    public Transform city;
     public float speed = 20;
 
     public float speedmult = 1f;
     public Sprite[] animationSprites;
 
-    int nextSpriteNumber = 1;
-    bool next = true;
-    private Image image;
-    // Start is called before the first frame update
-    void Start()
-    {
-        image = GetComponent<Image>();
+    public int group = 0;
 
-        StartCoroutine(Animate());
-      
+    public Animator animator;
+
+    private bool happy;
+    private bool dying;
+    private bool dancing;
+
+    private int nextSpriteNumber = 0;
+    private bool next = true;
+    private SpriteRenderer spriteRenderer;
+
+    private void OnDestroy()
+    {
+        signalBus.Unsubscribe<MoveWobblesSignal>(Move);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Move(MoveWobblesSignal moveWobblesSignal)
     {
-        float step = speed * Time.deltaTime  * speedmult; // calculate distance to move
-        transform.position = Vector3.MoveTowards(transform.position, city.transform.position, step);
-
-    }
-
-  IEnumerator Animate()
-    {
-        if (next)
+        if (moveWobblesSignal.wobbleGroups[group])
         {
-            image.sprite = animationSprites[nextSpriteNumber];
-            next = false;
+            if (animator.GetBool("happy") == true)
+            {
+                animator.SetBool("happy", false);
+            }
+            speed = 3;
         }
         else
         {
-            image.sprite = animationSprites[nextSpriteNumber - 1];
-            next = true;
+            if (animator.GetBool("happy") != true)
+            {
+                animator.SetBool("happy", true);
+            }
+            speed = 0;
         }
-
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(Animate());
-
     }
 
+    // Start is called before the first frame update
+    private void Start()
+    {
+        signalBus.Subscribe<MoveWobblesSignal>(Move);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        float step = speed * Time.deltaTime * speedmult; // calculate distance to move
+        transform.position = Vector3.MoveTowards(transform.position, city.position, step);
+
+        CheckForTouch();
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.name == "OuterZone")
+        if (other.gameObject.name == "OuterZone")
         {
-            nextSpriteNumber += 2;
-
-        } else if(other.gameObject.name == "InnerZone")
+            animator.SetInteger("evil", 1);
+        }
+        else if (other.gameObject.name == "InnerZone")
         {
-            nextSpriteNumber += 2;
+            animator.SetInteger("evil", 2);
         }
     }
 
+    private void OnClicked()
+    {
+        animator.SetBool("dying", true);
+    }
 
+    private void OnMouseDown()
+    {
+        OnClicked();
+    }
 
+    private bool CheckForTouch()
+    {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            var wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            var touchPosition = new Vector2(wp.x, wp.y);
+
+            if (GetComponent<BoxCollider2D>() == Physics2D.OverlapPoint(touchPosition))
+            {
+                OnClicked();
+            }
+        }
+
+        return false;
+    }
 }

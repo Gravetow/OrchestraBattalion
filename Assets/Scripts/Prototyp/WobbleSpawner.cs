@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WobbleSpawner : MonoBehaviour
+public class WobbleSpawner2 : MonoBehaviour
 {
     public GameObject city;
     public GameObject wobblePrefab;
 
-    Dictionary<int, SpectrumData> spectrumDataList = new Dictionary<int, SpectrumData>();
-    int[][] spectrumRanges;
+    private Dictionary<int, SpectrumData> spectrumDataList = new Dictionary<int, SpectrumData>();
+    private int[][] spectrumRanges;
 
-    Dictionary<int, GameObject> firstcubes = new Dictionary<int, GameObject>();
-    Dictionary<int, GameObject> secondcubes = new Dictionary<int, GameObject>();
-    Dictionary<int, GameObject> thirdcubes = new Dictionary<int, GameObject>();
-    Dictionary<int, GameObject> fourthcubes = new Dictionary<int, GameObject>();
+    private Dictionary<int, GameObject> firstcubes = new Dictionary<int, GameObject>();
+    private Dictionary<int, GameObject> secondcubes = new Dictionary<int, GameObject>();
+    private Dictionary<int, GameObject> thirdcubes = new Dictionary<int, GameObject>();
+    private Dictionary<int, GameObject> fourthcubes = new Dictionary<int, GameObject>();
 
-    void Start()
+    private void Start()
     {
         // define which aduio hz ranges we want to use
         spectrumRanges = new int[26][]
@@ -62,7 +62,6 @@ public class WobbleSpawner : MonoBehaviour
             new int[2] {1601, 1800},
             new int[2] {1801, 2000},
             new int[2] {2001, 2250}
-
         };
         // create data objects for each range
         for (int i = 0; i < spectrumRanges.Length; i++)
@@ -81,7 +80,7 @@ public class WobbleSpawner : MonoBehaviour
         {
             var group = item.Value;
             var cube = Instantiate(wobblePrefab);
-            cube.GetComponent<Wobble>().city = city;
+            //cube.GetComponent<Wobble>().city = city;
             cube.name = "" + spectrumRanges[item.Key].ToString();
             cube.transform.SetParent(transform);
             cube.name = group.index.ToString();
@@ -105,13 +104,11 @@ public class WobbleSpawner : MonoBehaviour
             {
                 thirdcubes.Add(group.index, cube);
                 //var mat = cube.GetComponent<Image>().color = Color.yellow;
-
             }
             else
             {
                 fourthcubes.Add(group.index, cube);
                 //var mat = cube.GetComponent<Image>().color = Color.green;
-
             }
 
             count++;
@@ -119,7 +116,7 @@ public class WobbleSpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // how much hz does each spectrum data sample represent
         var hzPerSample = (AudioSettings.outputSampleRate / 8192f);
@@ -188,49 +185,45 @@ public class WobbleSpawner : MonoBehaviour
         {
             if (firstGroup)
             {
-                cube.GetComponent<Wobble>().speed = 10;
+                cube.GetComponent<Wobble>().speed = 100;
             }
             else
             {
-                cube.GetComponent<Wobble>().speed = 25;
+                cube.GetComponent<Wobble>().speed = 15;
             }
         }
         foreach (GameObject cube in secondcubes.Values)
         {
             if (secondGroup)
             {
-                cube.GetComponent<Wobble>().speed = 10;
-
+                cube.GetComponent<Wobble>().speed = 50;
             }
             else
             {
-                cube.GetComponent<Wobble>().speed = 25;
+                cube.GetComponent<Wobble>().speed = 15;
             }
         }
         foreach (GameObject cube in thirdcubes.Values)
         {
             if (thirdGroup)
             {
-                cube.GetComponent<Wobble>().speed = 10;
-
+                cube.GetComponent<Wobble>().speed = 50;
             }
             else
             {
-                cube.GetComponent<Wobble>().speed = 25;
+                cube.GetComponent<Wobble>().speed = 15;
             }
         }
         foreach (GameObject cube in fourthcubes.Values)
         {
             if (fourthGroup)
             {
-                cube.GetComponent<Wobble>().speed = 10;
-
+                cube.GetComponent<Wobble>().speed = 25;
             }
             else
             {
-                cube.GetComponent<Wobble>().speed = 25;
+                cube.GetComponent<Wobble>().speed = 15;
             }
         }
-
     }
 }

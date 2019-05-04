@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 748591051
+    locked: 0
+  - name: Wobble
+    uniqueID: 1964857439
+    locked: 0
+  - name: Other
+    uniqueID: 3681602087
+    locked: 0
