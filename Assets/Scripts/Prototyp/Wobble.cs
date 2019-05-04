@@ -27,6 +27,8 @@ public class Wobble : MonoBehaviour
     private void OnDestroy()
     {
         signalBus.Unsubscribe<MoveWobblesSignal>(Move);
+        signalBus.Unsubscribe<LoseLifeSignal>(DieThroughCity);
+
     }
 
     private void Move(MoveWobblesSignal moveWobblesSignal)
@@ -62,6 +64,7 @@ public class Wobble : MonoBehaviour
     private void Start()
     {
         signalBus.Subscribe<MoveWobblesSignal>(Move);
+        signalBus.Subscribe<LoseLifeSignal>(DieThroughCity);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -112,6 +115,14 @@ public class Wobble : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void DieThroughCity()
+    {
+        happy = true;
+        animator.SetBool("happy", true);
+        animator.SetBool("dying", true);
+        speed = 0;
     }
 
     public void OnDead()

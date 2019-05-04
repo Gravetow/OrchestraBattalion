@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class City : MonoBehaviour
 {
+    [Inject]
+    SignalBus signalBus;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,6 @@ public class City : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            Debug.LogError("city hit");
+        signalBus.Fire(new LoseLifeSignal());
     }
 }

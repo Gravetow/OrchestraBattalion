@@ -9,8 +9,8 @@ public class StartGameButton : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
-        transform.parent.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(() =>
-         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+            transform.parent.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(() =>
+             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     // Start is called before the first frame update

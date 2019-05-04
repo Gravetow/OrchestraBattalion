@@ -8,12 +8,11 @@ public class Fader : MonoBehaviour
 {
     private void Awake()
     {
-        GetComponent<Image>().color = new Color(183, 202, 208, 255);
     }
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Image>().DOFade(0, 1f);       
+        GetComponent<Image>().DOFade(0, 2f);       
     }
 
 }

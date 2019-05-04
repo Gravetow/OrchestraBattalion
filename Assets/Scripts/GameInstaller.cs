@@ -11,6 +11,7 @@ public class GameInstaller : MonoInstaller
         Container.DeclareSignal<EndGameSignal>();
         Container.DeclareSignal<MoveWobblesSignal>();
         Container.DeclareSignal<WobbleDestroyedSignal>();
+        Container.DeclareSignal<LoseLifeSignal>();
 
         Container.BindInterfacesTo<AudioInterpreter>().AsSingle();
     }
