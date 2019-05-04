@@ -9,7 +9,7 @@ public class WobbleSpawner : MonoBehaviour
     private SignalBus signalBus;
 
     [SerializeField]
-    private GameObject wobblePrefab;
+    private List<GameObject> wobblePrefab = new List<GameObject>();
 
     [SerializeField]
     private Transform cityPosition;
@@ -45,11 +45,12 @@ public class WobbleSpawner : MonoBehaviour
     {
         while (spawn)
         {
-            GameObject wobble = Instantiate(wobblePrefab);
+            int groupNumber = Random.Range(0, 3);
+            GameObject wobble = Instantiate(wobblePrefab[groupNumber]);
             wobble.transform.position = transform.position + new Vector3(Random.Range(-5, 5), Random.Range(0, 10), 0);
             wobble.GetComponent<Wobble>().signalBus = signalBus;
             wobble.GetComponent<Wobble>().city = cityPosition;
-            wobble.GetComponent<Wobble>().group = Random.Range(0, 3);
+            wobble.GetComponent<Wobble>().group = groupNumber;
             yield return new WaitForSeconds(Random.Range(0.25f, 0.75f));
         }
     }

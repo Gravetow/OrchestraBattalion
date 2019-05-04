@@ -14,7 +14,6 @@ public class Wobble : MonoBehaviour
     public float speed = 20;
 
     public float speedmult = 1f;
-    public Sprite[] animationSprites;
 
     public int group = 0;
 
