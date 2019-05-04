@@ -12,7 +12,7 @@ public class Fader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Image>().DOFade(0, 2f);       
+        GetComponent<Image>().DOFade(0, 2f).OnComplete(() => gameObject.SetActive(false));       
     }
 
 }

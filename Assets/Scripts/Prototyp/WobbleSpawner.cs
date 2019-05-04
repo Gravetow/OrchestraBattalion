@@ -9,7 +9,6 @@ public class WobbleSpawner2 : MonoBehaviour
     public GameObject wobblePrefab;
     public GameObject wobble2Prefab;
     public GameObject wobble3Prefab;
-    public GameObject wobble4Prefab;
 
 
     private Dictionary<int, SpectrumData> spectrumDataList = new Dictionary<int, SpectrumData>();

@@ -443,90 +443,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134437783}
   m_CullTransparentMesh: 0
---- !u!1001 &232033536
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3165900907644011760, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_Name
-      value: Wobble 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011764, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011764, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011764, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011764, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011764, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011764, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011764, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011764, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011764, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011764, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011764, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3165900907644011767, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: wobbleHover
-      value: 
-      objectReference: {fileID: 849129706}
-    - target: {fileID: 1029081532962062113, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1029081532962062113, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.04
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d7b71f58afa93e743b5ddf2042ee9cb5, type: 3}
 --- !u!1 &241915368
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,12 +827,6 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!212 &849129706 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 507594503879616450, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-    type: 3}
-  m_PrefabInstance: {fileID: 232033536}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &976552808
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,7 +846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &976552809
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1539,7 +1449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1782801829
 RectTransform:
   m_ObjectHideFlags: 0
