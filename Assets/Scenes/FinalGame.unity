@@ -989,8 +989,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9884fb303e54745b19e6f28f19355e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wobblePrefab: {fileID: 3165900907644011760, guid: d7b71f58afa93e743b5ddf2042ee9cb5,
-    type: 3}
+  wobblePrefab:
+  - {fileID: 3165900907644011760, guid: 51b8cd2ccb087de48ad74af97befa6b3, type: 3}
+  - {fileID: 3165900907644011760, guid: d7b71f58afa93e743b5ddf2042ee9cb5, type: 3}
+  - {fileID: 3165900907644011760, guid: 4bfcab8daa9d0ba4983a43aa0e8c0b0a, type: 3}
+  - {fileID: 3165900907644011760, guid: 94031a2c3305fc34d8f0643293e02451, type: 3}
   cityPosition: {fileID: 528992073}
 --- !u!4 &1220496160
 Transform:

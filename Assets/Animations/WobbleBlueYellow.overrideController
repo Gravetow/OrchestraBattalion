@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WobbleBlueYellow
+  m_Controller: {fileID: 9100000, guid: 5daa37f661f94724d8cf649544d1b56d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: bcc653f99233d8f4da2750de53988340, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c21cc0d3f8a94c84ab8a10f90ecc50cb, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fe3a892746e4279499ff896321b4d745, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fd9b6805621ac974e90a8968b4cbcceb, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 06ff994dc015f3342987f38b3ab76431, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a2fa9a482a2724f4084aede7847e33c5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f38c77020d46f0d439bc15f1bcf9ce78, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 65b1caa3670f3b4439cda2da6bd834ea, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fbf8076b0c98b9141a11d0b5faab53ec, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0df4e23061870cc4f9514e685a0bf8bf, type: 2}
